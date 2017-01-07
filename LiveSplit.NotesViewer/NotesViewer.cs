@@ -57,7 +57,7 @@ namespace LiveSplit.NotesViewer {
 
       foreach (var l in lines) {
 
-        if (l[0] == '#') {
+        if (l.Length > 0 && l[0] == '#') {
 
           if (curNote != "") {
             notes.Add(curNote);

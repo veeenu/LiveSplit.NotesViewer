@@ -3,6 +3,10 @@
 A control for viewing notes for the current split.
 Currently requires consistency between number of splits in LiveSplits and sections in the settings (example shown below), and the notes have to be changed from the layout settings window when switching between different games. But it works, somewhat.
 
+### Installing
+
+Simply copy `LiveSplit.NotesViewer.dll` in the `Components` folder of LiveSplit.
+
 ### Example
 
 ```

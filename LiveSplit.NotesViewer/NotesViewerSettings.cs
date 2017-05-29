@@ -12,22 +12,22 @@ using System.Xml;
 namespace LiveSplit.NotesViewer {
   public partial class NotesViewerSettings : UserControl {
 
-    public string NotesText { get; set; }
+    public string NotesFile { get; set; }
     public int CtrlHeight { get; set; }
 
     public NotesViewerSettings() {
       InitializeComponent();
-      NotesText = "# First split\r\nExample 1\r\nExample 1\r\nExample 1\r\nExample 1\r\n# Second split\r\nExample 2\r\nExample 2\r\nExample 2\r\nExample 2\r\n# Third split\r\nExample 3\r\nExample 3\r\nExample 3\r\nExample 3";
+      //NotesText = "# First split\r\nExample 1\r\nExample 1\r\nExample 1\r\nExample 1\r\n# Second split\r\nExample 2\r\nExample 2\r\nExample 2\r\nExample 2\r\n# Third split\r\nExample 3\r\nExample 3\r\nExample 3\r\nExample 3";
       CtrlHeight = 512;
 
-      notesText.DataBindings.Add("Text", this, "NotesText", false, DataSourceUpdateMode.OnPropertyChanged);
+      notesFile.DataBindings.Add("Text", this, "NotesFile", false, DataSourceUpdateMode.OnPropertyChanged);
       heightBox.DataBindings.Add("Value", this, "CtrlHeight", false, DataSourceUpdateMode.OnPropertyChanged);
     }
 
     public void SetSettings(XmlNode node) {
       var el = (XmlElement)node;
       Version version = new Version(el["Version"].InnerText);
-      NotesText = el["NotesText"].InnerText;
+      NotesFile = el["NotesFile"].InnerText;
 
       int boh = 512;
       if(!el["CtrlHeight"].Equals(null))
@@ -46,8 +46,8 @@ namespace LiveSplit.NotesViewer {
       verEl.InnerText = "1.6";
       parent.AppendChild(verEl);
 
-      var memEl = document.CreateElement("NotesText");
-      memEl.InnerText = NotesText;
+      var memEl = document.CreateElement("NotesFile");
+      memEl.InnerText = NotesFile;
       parent.AppendChild(memEl);
 
       var hgtEl = document.CreateElement("CtrlHeight");
@@ -58,7 +58,6 @@ namespace LiveSplit.NotesViewer {
     }
 
     public int GetSettingsHashCode() => 31337;
-
 
   }
 }
